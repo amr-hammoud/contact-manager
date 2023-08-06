@@ -68,8 +68,19 @@ function ContactForm() {
 		});
 	};
 
-	const createContact = () => {
-		console.log(data);
+	const createContact = async () => {
+		// console.log(data);
+		const url = "http://127.0.0.1:8000/api/contact/createOrUpdate";
+		try {
+			const response = await axios.post(
+				url,
+				data,
+			);
+			console.log(response);
+
+		} catch (e) {
+			console.log(e);
+		}
 	};
 
 	return (
