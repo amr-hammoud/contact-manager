@@ -1,0 +1,6 @@
+.all {
+    padding-top: 50px;
+    display: flex;
+    height: 100vh;
+    gap: 30px;
+}
