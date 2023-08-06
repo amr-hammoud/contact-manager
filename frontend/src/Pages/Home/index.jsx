@@ -1,28 +1,30 @@
-import React, { useEffect, useState } from 'react'
-import ContactList from '../../Components/ContactList'
-import axios from 'axios'
-import './style.css'
-
+import React, { useEffect, useState } from "react";
+import ContactList from "../../Components/ContactList";
+import axios from "axios";
+import "./style.css";
+import Sidebar from "../../Components/Sidebar";
 
 function Home() {
+	const [contacts, setContacts] = useState([]);
 
-  const [contacts, setContacts] = useState([])
+	const fetchContacts = async () => {
+		const response = await axios("http://127.0.0.1:8000/api/contact");
+		setContacts(response.data);
+	};
 
-  const fetchContacts = async () => {
-    const response = await axios('http://127.0.0.1:8000/api/contact')
-    setContacts(response.data)
-  }
+	useEffect(() => {
+		fetchContacts();
+	}, []);
 
-  useEffect(() => {
-    fetchContacts()
-  }, [])
-
-  return (
-    <div className='home'>
-      <h1>Contacts List</h1>
-      <ContactList contacts={contacts}/>
-    </div>
-  )
+	return (
+		<div className="all">
+			<Sidebar />
+			<div className="home">
+				<h1>Contacts List</h1>
+				<ContactList contacts={contacts} />
+			</div>
+		</div>
+	);
 }
 
-export default Home
+export default Home;

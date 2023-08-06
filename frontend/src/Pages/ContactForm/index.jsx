@@ -3,6 +3,7 @@ import axios from "axios";
 import LocationSuggestions from "../../Components/LocationSuggestions";
 import React, { useEffect, useState } from "react";
 import "./style.css";
+import Sidebar from "../../Components/Sidebar";
 
 function ContactForm() {
 	const [data, setData] = useState({
@@ -81,39 +82,42 @@ function ContactForm() {
 	};
 
 	return (
-		<div className="container">
-			<h1>Contact Form</h1>
-			<div className="form">
-				<div className="form-input">
-					<input
-						type="text"
-						placeholder="Name"
-						onChange={handleNameChange}
-						autoFocus
-					/>
-				</div>
+		<div className="all">
+			<Sidebar />
+			<div className="contact-form">
+				<h1>Contact Form</h1>
+				<div className="form">
+					<div className="form-input">
+						<input
+							type="text"
+							placeholder="Name"
+							onChange={handleNameChange}
+							autoFocus
+						/>
+					</div>
 
-				<div className="form-input">
-					<PhoneInput
-						countryCode={"lb"}
-						onChange={handlePhoneChange}
-					/>
-				</div>
+					<div className="form-input">
+						<PhoneInput
+							countryCode={"lb"}
+							onChange={handlePhoneChange}
+						/>
+					</div>
 
-				<div className="form-input">
-					<input
-						type="text"
-						placeholder="City"
-						list="suggestions"
-						onChange={handleLocationChange}
-					/>
-					<LocationSuggestions
-						location_data={location_data.locations}
-					/>
-				</div>
+					<div className="form-input">
+						<input
+							type="text"
+							placeholder="City"
+							list="suggestions"
+							onChange={handleLocationChange}
+						/>
+						<LocationSuggestions
+							location_data={location_data.locations}
+						/>
+					</div>
 
-				<div className="form-input">
-					<button onClick={createContact}>Create</button>
+					<div className="form-input">
+						<button onClick={createContact}>Create</button>
+					</div>
 				</div>
 			</div>
 		</div>
