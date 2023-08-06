@@ -6,14 +6,13 @@ import delete_icon from '../../assets/icons/delete.svg'
 const ContactList = ({contacts}) => {
   return (
     <div className='container'>
-
       <table>
         <thead>
           <tr>
             <th>Name</th>
             <th>Phone Number</th>
             <th>Location</th>
-            <th>a</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
