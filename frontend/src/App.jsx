@@ -9,8 +9,8 @@ import Sidebar from "./Components/Sidebar";
 
 function App() {
 	return (
-		<div>
-			<Header />
+		<div className="all">
+			<Sidebar />
 			<BrowserRouter>
 				<Routes>
 					<Route path="/" element={<Home />} />
@@ -19,7 +19,6 @@ function App() {
 					<Route path="*" element={<E404 />} />
 				</Routes>
 			</BrowserRouter>
-			<Sidebar />
 		</div>
 	);
 }
