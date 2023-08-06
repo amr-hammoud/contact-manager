@@ -2,6 +2,7 @@ import { PhoneInput } from "react-contact-number-input";
 import axios from "axios";
 import LocationSuggestions from "../../Components/LocationSuggestions";
 import React, { useEffect, useState } from "react";
+import "./style.css";
 
 function ContactForm() {
 	const [data, setData] = useState({
@@ -72,12 +73,8 @@ function ContactForm() {
 		// console.log(data);
 		const url = "http://127.0.0.1:8000/api/contact/createOrUpdate";
 		try {
-			const response = await axios.post(
-				url,
-				data,
-			);
+			const response = await axios.post(url, data);
 			console.log(response);
-
 		} catch (e) {
 			console.log(e);
 		}
@@ -86,24 +83,39 @@ function ContactForm() {
 	return (
 		<div className="container">
 			<h1>Contact Form</h1>
-			<input
-				type="text"
-				placeholder="Name"
-				onChange={handleNameChange}
-				autoFocus
-			/>
+			<div className="form">
+				<div className="form-input">
+					<input
+						type="text"
+						placeholder="Name"
+						onChange={handleNameChange}
+						autoFocus
+					/>
+				</div>
 
-			<input
-				type="text"
-				placeholder="City"
-				list="suggestions"
-				onChange={handleLocationChange}
-			/>
+				<div className="form-input">
+					<PhoneInput
+						countryCode={"lb"}
+						onChange={handlePhoneChange}
+					/>
+				</div>
 
-			<LocationSuggestions location_data={location_data.locations} />
+				<div className="form-input">
+					<input
+						type="text"
+						placeholder="City"
+						list="suggestions"
+						onChange={handleLocationChange}
+					/>
+					<LocationSuggestions
+						location_data={location_data.locations}
+					/>
+				</div>
 
-			<PhoneInput countryCode={"lb"} onChange={handlePhoneChange} />
-			<button onClick={createContact}>Create</button>
+				<div className="form-input">
+					<button onClick={createContact}>Create</button>
+				</div>
+			</div>
 		</div>
 	);
 }
