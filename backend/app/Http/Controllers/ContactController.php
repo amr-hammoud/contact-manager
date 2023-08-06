@@ -26,10 +26,7 @@ class ContactController extends Controller
         $contact->user_id = $request->user_id ? $request->user_id : 1;
         $contact->save();
 
-        return response()->json([
-            'status' => 'success',
-            'data' => $contact
-        ]);
+        return response()->json(['status' => 'success']);
     }
 
 
@@ -41,18 +38,13 @@ class ContactController extends Controller
         } else {
             $contacts = Contact::all();
         }
-        return response()->json([
-            'status' => 'success',
-            'data' => $contacts,
-        ]);
+        return response()->json($contacts);
     }
 
 
     public function delete($id)
     {
         $contact = Contact::find($id)->delete();
-        return response()->json([
-            'status' => 'success',
-        ]);
+        return response()->json(['status' => 'success']);
     }
 }
