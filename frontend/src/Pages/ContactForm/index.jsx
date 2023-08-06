@@ -4,8 +4,28 @@ import LocationSuggestions from "../../Components/LocationSuggestions";
 import React, { useEffect, useState } from "react";
 import "./style.css";
 import Sidebar from "../../Components/Sidebar";
+import { useParams } from "react-router-dom";
 
 function ContactForm() {
+	const { id } = useParams();
+
+	useEffect(() => {
+		fillForm();
+	}, [id]);
+
+	const fillForm = async () => {
+		const response = await axios(`http://127.0.0.1:8000/api/contact/${id}`);
+		const contact = response.data;
+		setData({
+			...data,
+			name: contact.name,
+			phone_number: contact.phone_number,
+			location: contact.location,
+			latitude: contact.latitude,
+			longitude: contact.longitude,
+		});
+	};
+
 	const [data, setData] = useState({
 		name: "",
 		phone_number: "",
@@ -72,12 +92,25 @@ function ContactForm() {
 		});
 	};
 
-	const createContact = async () => {
-		// console.log(data);
-		const url = "http://127.0.0.1:8000/api/contact/createOrUpdate";
+	const clearInputs = () => {
+		setData({
+			...data,
+			name: "",
+			phone_number: "",
+			location: "",
+			latitude: "",
+			longitude: "",
+		});
+	};
+
+	const createOrUpdateContact = async () => {
+		const url = id
+			? `http://127.0.0.1:8000/api/contact/createOrUpdate/${id}`
+			: `http://127.0.0.1:8000/api/contact/createOrUpdate`;
 		try {
 			const response = await axios.post(url, data);
 			console.log(response);
+			clearInputs();
 		} catch (e) {
 			console.log(e);
 		}
@@ -94,6 +127,7 @@ function ContactForm() {
 							type="text"
 							placeholder="Name"
 							onChange={handleNameChange}
+							value={data.name}
 							autoFocus
 						/>
 					</div>
@@ -111,6 +145,7 @@ function ContactForm() {
 							placeholder="City"
 							list="suggestions"
 							onChange={handleLocationChange}
+							value={data.location}
 						/>
 						<LocationSuggestions
 							location_data={location_data.locations}
@@ -118,7 +153,7 @@ function ContactForm() {
 					</div>
 
 					<div className="form-input">
-						<button onClick={createContact}>Create</button>
+						<button onClick={createOrUpdateContact}>Confirm</button>
 					</div>
 				</div>
 			</div>
