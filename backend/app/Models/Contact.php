@@ -9,8 +9,4 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Contact extends Model
 {
     use HasFactory;
-
-    public function owner(){
-        return $this->BelongsTo(User::class, 'user_id');
-    }
 }

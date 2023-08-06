@@ -15,14 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('phone_number');
+            $table->string('location');
             $table->unsignedDecimal('latitude',10,7)->nullable();
             $table->unsignedDecimal('longitude',10,7)->nullable();
-            $table->unsignedBigInteger('user_id')->default(1);
             $table->timestamps();
-        });
-
-        Schema::table('contacts', function (Blueprint $t) {
-            $t->foreign('user_id')->references('id')->on('users');
         });
     }
 
