@@ -8,7 +8,7 @@ import location_icon from '../../assets/icons/location.svg'
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
 
-const ContactList = ({contacts}) => {
+const ContactList = ({contacts, onDeleteContact}) => {
 
   const navigate = useNavigate();
 
@@ -17,9 +17,9 @@ const ContactList = ({contacts}) => {
 	}
 
   const deleteContact = async (id) => {
-    console.log(id);
     const response = await axios.delete(`http://127.0.0.1:8000/api/contact/delete/${id}`,{headers:{Accept:"application/json"}})
     console.log(response);
+    onDeleteContact(id);
   }
 
 

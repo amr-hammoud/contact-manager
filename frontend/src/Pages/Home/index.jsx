@@ -16,12 +16,19 @@ function Home() {
 		fetchContacts();
 	}, []);
 
+	const handleDeleteContact = (deletedContactId) => {
+		const updatedContacts = contacts.filter(
+			(contact) => contact.id !== deletedContactId
+		);
+		setContacts(updatedContacts);
+	};
+
 	return (
 		<div className="all">
 			<Sidebar />
 			<div className="home">
 				<h1>Contacts List</h1>
-				<ContactList contacts={contacts} />
+				<ContactList contacts={contacts} onDeleteContact={handleDeleteContact}/>
 			</div>
 		</div>
 	);
