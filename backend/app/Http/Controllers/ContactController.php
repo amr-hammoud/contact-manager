@@ -7,8 +7,16 @@ use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
-    public function createOrUpdate(Request $request)
+
+    public function createOrUpdate(Request $request, $id = "add")
     {
+
+        if($id == "add"){
+            $contact = new Contact();
+        }else{
+            $contact = Contact::find($id);
+            
+        }
 
         $request->validate([
             'name' => 'required|string|max:255',
@@ -16,10 +24,8 @@ class ContactController extends Controller
             'location' => 'required|string|max:255',
             'latitude' => 'decimal:0,99|nullable',
             'longitude' => 'decimal:0,99|nullable',
-            'user_id' => 'numeric',
         ]);
-
-        $contact = new Contact();
+        
         $contact->name = $request->name;
         $contact->phone_number = $request->phone_number;
         $contact->location = $request->location;
