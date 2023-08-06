@@ -6,6 +6,7 @@ import person_icon from '../../assets/icons/person.svg'
 import phone_icon from '../../assets/icons/phone.svg'
 import location_icon from '../../assets/icons/location.svg'
 import { useNavigate } from "react-router-dom";
+import axios from 'axios'
 
 const ContactList = ({contacts}) => {
 
@@ -14,6 +15,13 @@ const ContactList = ({contacts}) => {
 	const handleNavigation = (route) => {
 		navigate(route)
 	}
+
+  const deleteContact = async (id) => {
+    console.log(id);
+    const response = await axios.delete(`http://127.0.0.1:8000/api/contact/delete/${id}`,{headers:{Accept:"application/json"}})
+    console.log(response);
+  }
+
 
   return (
     <div className='container'>
@@ -34,7 +42,7 @@ const ContactList = ({contacts}) => {
             <td>{contact.location}</td>
             <td className='actions'>
               <img src={edit_icon} alt="edit" onClick={() => handleNavigation(`/form/${contact.id}`)} />
-              <img src={delete_icon} alt="delete" />
+              <img src={delete_icon} alt="delete" onClick={() => deleteContact(contact.id)}/>
             </td>
           </tr>
           ))}
