@@ -41,4 +41,5 @@ thead td img{
 
 .actions  img:hover {
     opacity: 1;
+    cursor: pointer;
 }
