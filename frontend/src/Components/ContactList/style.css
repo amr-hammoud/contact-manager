@@ -30,7 +30,6 @@ thead td img{
 }
 
 .contact-row:hover {
-    cursor: pointer;
     background-color: var(--color-off-white);
 }
 
