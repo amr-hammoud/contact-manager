@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('phone_number');
             $table->string('location');
-            $table->unsignedDecimal('latitude',10,7)->nullable();
-            $table->unsignedDecimal('longitude',10,7)->nullable();
+            $table->decimal('latitude',21,17)->nullable();
+            $table->decimal('longitude',21,17)->nullable();
             $table->timestamps();
         });
     }
