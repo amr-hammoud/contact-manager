@@ -1,7 +1,3 @@
-.container {
-    margin: 25px;
-}
-
 table {
     width: 100%;
     border-collapse: collapse;
@@ -26,12 +22,12 @@ thead th {
     background-color: var(--color-off-white);
 }
 
-img {
+.actions img {
     display: inline-block;
     margin: 0px 10px;
     opacity: 0.6;
 }
 
-img:hover {
+.actions  img:hover {
     opacity: 1;
 }

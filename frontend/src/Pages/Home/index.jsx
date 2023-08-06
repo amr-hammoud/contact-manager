@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ContactList from '../../Components/ContactList'
 import axios from 'axios'
+import './style.css'
 
 
 function Home() {
@@ -17,7 +18,7 @@ function Home() {
   }, [])
 
   return (
-    <div>
+    <div className='home'>
       <h1>Contacts List</h1>
       <ContactList contacts={contacts}/>
     </div>

@@ -1,6 +1,11 @@
 .all {
-    padding-top: 50px;
     display: flex;
     height: 100vh;
     gap: 30px;
+}
+
+h1 {
+    color: var(--color-secondary);
+    font-size: 36px;
+    margin: 15px 15px 15px 0px;
 }
