@@ -5,16 +5,24 @@ import delete_icon from '../../assets/icons/delete.svg'
 import person_icon from '../../assets/icons/person.svg'
 import phone_icon from '../../assets/icons/phone.svg'
 import location_icon from '../../assets/icons/location.svg'
+import { useNavigate } from "react-router-dom";
 
 const ContactList = ({contacts}) => {
+
+  const navigate = useNavigate();
+
+	const handleNavigation = (route) => {
+		navigate(route)
+	}
+
   return (
     <div className='container'>
       <table>
         <thead>
           <tr>
-            <th><td><img src={person_icon} alt="" />Name</td></th>
-            <th><td><img src={phone_icon} alt="" />Phone Number</td></th>
-            <th><td><img src={location_icon} alt="" />Location</td></th>
+            <th><div><img src={person_icon} alt="" />Name</div></th>
+            <th><div><img src={phone_icon} alt="" />Phone Number</div></th>
+            <th><div><img src={location_icon} alt="" />Location</div></th>
             <th></th>
           </tr>
         </thead>
@@ -25,7 +33,7 @@ const ContactList = ({contacts}) => {
             <td>{contact.phone_number}</td>
             <td>{contact.location}</td>
             <td className='actions'>
-              <img src={edit_icon} alt="edit" />
+              <img src={edit_icon} alt="edit" onClick={() => handleNavigation(`/form/${contact.id}`)} />
               <img src={delete_icon} alt="delete" />
             </td>
           </tr>

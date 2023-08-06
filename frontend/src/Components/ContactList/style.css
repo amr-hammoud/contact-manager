@@ -17,7 +17,7 @@ thead th {
     padding: 20px 10px;
 }
 
-thead td {
+thead div {
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
