@@ -17,6 +17,18 @@ thead th {
     padding: 20px 10px;
 }
 
+thead td {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 0;
+}
+
+thead td img{
+    display: inline;
+}
+
 .contact-row:hover {
     cursor: pointer;
     background-color: var(--color-off-white);

@@ -9,6 +9,7 @@ function ContactForm() {
 	const [data, setData] = useState({
 		name: "",
 		phone_number: "",
+		location: "",
 		latitude: "",
 		longitude: "",
 	});
@@ -47,6 +48,7 @@ function ContactForm() {
 		if (selected_location) {
 			setData({
 				...data,
+				location: selected_location.fields.ascii_name,
 				latitude: selected_location.fields.latitude,
 				longitude: selected_location.fields.longitude,
 			});
