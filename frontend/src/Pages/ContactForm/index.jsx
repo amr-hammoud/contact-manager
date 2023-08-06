@@ -75,6 +75,7 @@ function ContactForm() {
 		} else {
 			setData({
 				...data,
+				location: selected_city,
 				latitude: "",
 				longitude: "",
 			});
