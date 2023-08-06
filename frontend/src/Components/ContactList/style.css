@@ -1,0 +1,32 @@
+.container {
+    margin: 25px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--color-secondary);
+}
+
+td {
+    padding: 20px 10px;
+}
+
+thead tr {
+    text-align: left;
+    background-color: var(--color-ghost-white);
+}
+
+thead th {
+    padding: 20px 10px;
+}
+
+.contact-row:hover {
+    cursor: pointer;
+    background-color: var(--color-off-white);
+}
+
+img {
+    display: inline-block;
+    margin: 0px 10px;
+}
